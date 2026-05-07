@@ -1,11 +1,11 @@
 server:
-  port: ${PORT:8080}
+  port: ${PORT}
 
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/wellness_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
-    username: root
-    password: ${DB_PASSWORD:password}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,8 +16,8 @@ spring:
   mail:
     host: smtp-relay.brevo.com
     port: 587
-    username: ${MAIL_USERNAME:your_email@example.com}
-    password: ${MAIL_PASSWORD:your_password_here}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -30,16 +30,16 @@ spring:
           writetimeout: 5000
 
 jwt:
-  secret: ${JWT_SECRET:secret}
+  secret: ${JWT_SECRET}
   expirationMs: 86400000
 
 stripe:
-  apiKey: ${STRIPE_API_KEY:sk_test_dummy_key}
+  apiKey: ${STRIPE_API_KEY}
 
 twilio:
   account:
-    sid: ${TWILIO_ACCOUNT_SID:ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+    sid: ${TWILIO_ACCOUNT_SID}
   auth:
-    token: ${TWILIO_AUTH_TOKEN:your_auth_token_here}
+    token: ${TWILIO_AUTH_TOKEN}
   phone:
-    number: ${TWILIO_PHONE_NUMBER:+1XXXXXXXXXX}
+    number: ${TWILIO_PHONE_NUMBER}
