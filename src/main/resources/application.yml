@@ -1,18 +1,19 @@
 server:
-  port: ${PORT}
+  port: ${SERVER_PORT:8080}
 
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: false
   mail:
     host: smtp-relay.brevo.com
     port: 587
@@ -24,22 +25,7 @@ spring:
           auth: true
           starttls:
             enable: true
-            required: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
 
 jwt:
   secret: ${JWT_SECRET}
-  expirationMs: 86400000
-
-stripe:
-  apiKey: ${STRIPE_API_KEY}
-
-twilio:
-  account:
-    sid: ${TWILIO_ACCOUNT_SID}
-  auth:
-    token: ${TWILIO_AUTH_TOKEN}
-  phone:
-    number: ${TWILIO_PHONE_NUMBER}
+  expiration: 86400000
